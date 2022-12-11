@@ -1,7 +1,7 @@
 //imports
+const mongoose = require('mongoose');
 require('dotenv').config();
 const express  = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
 // require("./db/conn");
 const adminDetail = require("./models/admindetail");
