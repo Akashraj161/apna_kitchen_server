@@ -21,13 +21,19 @@ app.use(express.urlencoded({
 }));
 app.use(express.static("uploads"));
 
-
 //database connection
 require("./db/conn");
 
 //Routes
 
 app.use("/api/post", require("./routes/routes"));
+
+if(process.env.NODE_ENV === "production"){
+  app.use(express.static(__dirname + "/dist/"));
+  app.get("*",(req,res)=>{
+    res.sendFile(__dirname + "dist/index.html");
+  });
+}
 
 app.post("/api/adminlogin", async (req, res) => {
     console.log(req.body);
